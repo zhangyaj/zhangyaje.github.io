@@ -147,7 +147,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        
+                        <a href="/tags/EXCLE/" style="font-size: 10px;">EXCLE</a>
                     </div>
                 </section>
                 
@@ -228,6 +228,50 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-BT_test" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/07/06/BT_test/" class="article-date">
+      <time datetime="2017-07-06T07:41:06.731Z" itemprop="datePublished">2017-07-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Title: BT_test<br>Date: 2017-01-27 17:17</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf8-*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> urllib</div><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="keyword">import</span> xlwt</div><div class="line"><span class="keyword">import</span> xlrd</div><div class="line"><span class="keyword">from</span> xlutils.copy <span class="keyword">import</span> copy;</div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">import</span> simplejson</div><div class="line"></div><div class="line">Dat1 = <span class="number">15882</span></div><div class="line"><span class="keyword">while</span> Dat1 &lt; <span class="number">100000</span>:</div><div class="line">   <span class="keyword">try</span>:</div><div class="line">      url = <span class="string">'http://www.isobt.net/info/'</span> + str(Dat1) + <span class="string">'#'</span></div><div class="line">      user_agent = <span class="string">'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'</span></div><div class="line">      headers = &#123;<span class="string">'User-Agent'</span>: user_agent&#125;</div><div class="line">      <span class="keyword">print</span> url</div><div class="line">      url2 = <span class="string">'http://www.isobt.net/api/json_info?hashes='</span> + str(Dat1)</div><div class="line"></div><div class="line">      req2 = urllib2.Request(url2, headers=headers)</div><div class="line">      response2 = urllib2.urlopen(req2)</div><div class="line">      html2 = response2.read()</div><div class="line">      <span class="comment"># link = re.findall('&lt;h1&gt;(.+?)&lt;/h1&gt;', html)</span></div><div class="line">      ret_dict = simplejson.loads(html2)</div><div class="line">      <span class="comment"># print ret_dict['result'][0]['info_hash']</span></div><div class="line">      clbt = <span class="string">"magnet:?xt=urn:btih:"</span> + ret_dict[<span class="string">'result'</span>][<span class="number">0</span>][<span class="string">'info_hash'</span>]</div><div class="line">      <span class="comment"># print clbt</span></div><div class="line"></div><div class="line">      <span class="comment"># print html2[2]["info_hash"]</span></div><div class="line"></div><div class="line">      req = urllib2.Request(url, headers=headers)</div><div class="line">      response = urllib2.urlopen(req)</div><div class="line">      html = response.read()</div><div class="line">      <span class="comment"># print html</span></div><div class="line"></div><div class="line"></div><div class="line">      Namelist1 = re.findall(<span class="string">'&lt;h1&gt;(.+?)&lt;/h1&gt;'</span>, html)</div><div class="line">      <span class="comment"># print Namelist1[0]</span></div><div class="line">      time1 = re.findall(<span class="string">'&lt;th&gt;(.+?)&lt;/th&gt;'</span>, html)</div><div class="line">      <span class="comment"># print time1[0]</span></div><div class="line">      time2 = re.findall(<span class="string">'&lt;td&gt;(.+?)&lt;/td&gt;'</span>, html)</div><div class="line">      <span class="comment"># print time2[0]</span></div><div class="line">      Namelist2 = re.findall(<span class="string">'&lt;li&gt;(.+?)&lt;span'</span>, html)</div><div class="line">      <span class="comment"># print Namelist2[0]</span></div><div class="line">      time3 = re.findall(<span class="string">'&lt;li&gt;.*?&lt;span class="cpill blue-pill"&gt;(.+?)&lt;/span&gt;'</span>, html)</div><div class="line">      <span class="comment"># print time3[0]</span></div><div class="line">      li = len(Namelist2)</div><div class="line">      Namelist3 = <span class="string">' '</span></div><div class="line">      li2 = li + <span class="number">1</span></div><div class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, li2):</div><div class="line">         Namelist3 = Namelist3 + <span class="string">'\n'</span> + str(i) + <span class="string">"."</span> + Namelist2[i - <span class="number">1</span>] + time3[i - <span class="number">1</span>]</div><div class="line">      <span class="comment"># print Namelist3</span></div><div class="line"></div><div class="line">      oldWb = xlrd.open_workbook(<span class="string">"F:/xx2.xls"</span>, formatting_info=<span class="keyword">True</span>);</div><div class="line">      <span class="comment">#print oldWb;  # &lt;xlrd.book.Book object at 0x000000000315C940&gt;</span></div><div class="line">      newWb = copy(oldWb);</div><div class="line">      <span class="comment">#print newWb;  # &lt;xlwt.Workbook.Workbook object at 0x000000000315F470&gt;</span></div><div class="line">      newWs = newWb.get_sheet(<span class="number">0</span>);</div><div class="line">      newWs.write(Dat1, <span class="number">0</span>, Dat1);</div><div class="line">      newWs.write(Dat1, <span class="number">1</span>, unicode(Namelist1[<span class="number">0</span>], <span class="string">"utf8"</span>));</div><div class="line">      newWs.write(Dat1, <span class="number">2</span>, unicode(time2[<span class="number">0</span>], <span class="string">"utf8"</span>));</div><div class="line">      newWs.write(Dat1, <span class="number">3</span>, unicode(time2[<span class="number">1</span>], <span class="string">"utf8"</span>));</div><div class="line">      newWs.write(Dat1, <span class="number">4</span>, unicode(time2[<span class="number">2</span>], <span class="string">"utf8"</span>));</div><div class="line">      newWs.write(Dat1, <span class="number">5</span>, unicode(time2[<span class="number">4</span>], <span class="string">"utf8"</span>));</div><div class="line">      newWs.write(Dat1, <span class="number">6</span>, unicode(time2[<span class="number">5</span>], <span class="string">"utf8"</span>));</div><div class="line">      newWs.write(Dat1, <span class="number">7</span>, clbt);</div><div class="line">      newWs.write(Dat1, <span class="number">8</span>, unicode(Namelist3, <span class="string">"utf8"</span>));</div><div class="line">      <span class="comment">#print "write new values ok";</span></div><div class="line">      newWb.save(<span class="string">"F:/xx2.xls"</span>);</div><div class="line">      <span class="comment">#print "save with same name ok";</span></div><div class="line">      Dat1 += <span class="number">1</span></div><div class="line">   <span class="keyword">except</span>:</div><div class="line">      Dat1 += <span class="number">1</span></div></pre></td></tr></table></figure>
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-test-my-site" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -329,6 +373,71 @@
       
 
       
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-EXCEL查找函数—MATCH" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/16/EXCEL查找函数—MATCH/" class="article-date">
+      <time datetime="2016-06-16T11:58:00.000Z" itemprop="datePublished">2016-06-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>MATCH为EXCLE中常用的查找函数之一，其调用语法为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MATCH(lookup_value,lookup_array,match_type)</div></pre></td></tr></table></figure></p>
+<p>##参数说明：<br>-</p>
+<blockquote>
+<p>###Lookup_value<br>为需要在数据表中查找的数值。Lookup_value 为需要在 Lookup_array 中查找的数值。例如，如果要在电话簿中查找某人的电话号码，则应该将姓名作为查找值，但实际上需要的是电话号码。Lookup_value 可以为数值（数字、文本或逻辑值）或对数字、文本或逻辑值的单元格引用。</p>
+</blockquote>
+<p>-</p>
+<blockquote>
+<p>###Lookup_array<br> 可能包含所要查找的数值的连续单元格区域。Lookup_array 应为数组或数组引用。</p>
+</blockquote>
+<p>-</p>
+<blockquote>
+<p>###Match_type<br>为数字 -1、0 或 1。Match_type 指明 Microsoft Excel 如何在 lookup_array 中查找 lookup_value。如果 match_type 为 1，函数 MATCH 查找小于或等于 lookup_value 的最大数值。Lookup_array 必须按升序排列：…、-2、-1、0、1、2、…、A-Z、FALSE、TRUE。如果 match_type 为 0，函数 MATCH 查找等于 lookup_value 的第一个数值。Lookup_array 可以按任何顺序排列。如果 match_type 为 -1，函数 MATCH 查找大于或等于 lookup_value 的最小数值。Lookup_array 必须按降序排列：TRUE、FALSE、Z-A、…、2、1、0、-1、-2、…，等等。如果省略 match_type，则假设为 1。</p>
+</blockquote>
+<p>-</p>
+<blockquote>
+<p>###其他说明<br>函数 MATCH 返回 lookup_array 中目标值的位置，而不是数值本身。例如，MATCH(“b”,{“a”,”b”,”c”},0) 返回 2，即“b”在数组 {“a”,”b”,”c”} 中的相应位置。<br>查找文本值时，函数 MATCH 不区分大小写字母。<br>如果函数 MATCH 查找不成功，则返回错误值 #N/A。<br>如果 match_type 为 0 且 lookup_value 为文本，可以在 lookup_value 中使用通配符、问号 (?) 和星号 (*)。问号匹配任意单个字符；星号匹配任意一串字符。如果要查找实际的问号或星号，请在该字符前键入波形符 (~)。 </p>
+</blockquote>
+<p><img src="http://o7vomaa8v.bkt.clouddn.com/EXCLE-MATCH.gif" alt="IMage"></p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EXCLE/">EXCLE</a></li></ul>
+    </div>
+
       
       <div class="clearfix"></div>
     </div>
