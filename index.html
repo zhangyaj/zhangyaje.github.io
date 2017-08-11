@@ -229,6 +229,89 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Ubuntu安装pycharm用于Python开发环境部署" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/07/06/Ubuntu安装pycharm用于Python开发环境部署/" class="article-date">
+      <time datetime="2017-07-06T07:41:06.758Z" itemprop="datePublished">2017-07-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Title: Ubuntu安装pycharm用于Python开发环境部署<br>Date: 2017-01-27 17:29</p>
+<p>##一、目标</p>
+<p>实现在Linux下用pycharm调试工具/Python开发 </p>
+<p>Linux使用vi/vim工具写Python，缺点：调试不方便，无代码提示、跳转等诸多功能。</p>
+<p>Windows使用idle/pycharm/eclipse等，环境包安装麻烦。写好的代码往往也得迁移至Linux服务器环境。</p>
+<p>解决办法：直接在Linux环境下安装pycharm编译器。</p>
+<p>附：about pycharm</p>
+<p>PyCharm是一种Python IDE，带有一整套可以帮助用户在使用Python语言开发时提高其效率的工具，比如调试、语法高亮、Project管理、代码跳转、智能提示、自动完成、单元测试、版本控制。此外，该IDE提供了一些高级功能，以用于支持Django框架下的专业Web开发。</p>
+<p>##二、实施过程</p>
+<p> 2.1、安装pycharm</p>
+<p>Pycharm下载地址：<a href="http://www.jetbrains.com/pycharm/download/" target="_blank" rel="external">http://www.jetbrains.com/pycharm/download/</a> （建议选择开源的社区版本）</p>
+<p>2.2安装pycharm的JDK环境</p>
+<p>Pycharm需要JDK环境解析，否则在安装过程中报错。</p>
+<p>依次执行一下几条command</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository ppa:webupd8team/java</div><div class="line"></div><div class="line">sudo apt-get update</div><div class="line"></div><div class="line">sudo apt-get install oracle-java8-installer（此处环境包较大，如下载中途停止退出，重复执行即可）</div></pre></td></tr></table></figure>
+<p>安装过程中会跳出Oracle license对话框，选择接受就是了。</p>
+<p>安装完成后，运行”java -version”或者”javac -version”查看是否安装成功。如果得到类似如下的输出，表明安装成功了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">root@ubuntu:~# java -version</div><div class="line"></div><div class="line">java version &quot;1.8.0_66&quot;</div><div class="line"></div><div class="line">Java(TM) SE Runtime Environment (build 1.8.0_66-b17)</div><div class="line"></div><div class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.66-b17, mixed mode)</div><div class="line"></div><div class="line">root@ubuntu:~# javac -version</div><div class="line"></div><div class="line">javac 1.8.0_66</div></pre></td></tr></table></figure>
+<p>配置Java_home环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#sudo apt-get install oracle-java8-set-default</div><div class="line"></div><div class="line">#echo JAVA_HOME=&quot;/usr/lib/jvm/java-8-oracle&quot; &gt;&gt; /etc/environment</div><div class="line"></div><div class="line">#source /etc/environment</div></pre></td></tr></table></figure>
+<p>2.3 安装pycharm.sh</p>
+<p>解压安装好的pycharm安装包，解压并执行pycharm.sh，按照default提示即可。</p>
+<p>参考：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">root@ubuntu:/opt# sudo tar -zxvf pycharm-community-5.0.1.tar.gz</div><div class="line"></div><div class="line">root@ubuntu:/opt# sudo sh pycharm-community-5.0.1/bin/pycharm.sh</div></pre></td></tr></table></figure>
+<p>然后按照默认提示选择OK往下安装即可。</p>
+<p>平时使用启动pycharm，执行sudo sh pycharm-community-5.0.1/bin/pycharm.sh。</p>
+<p>（1、参考网页:<a href="http://www.cnblogs.com/zhcncn/p/4027025.html）" target="_blank" rel="external">http://www.cnblogs.com/zhcncn/p/4027025.html）</a></p>
+<p>##三、Ubuntu中文输入法</p>
+<p>在这里介绍Ubuntu14.04安装搜狗输入法，并且实现pycharm可以使用搜狗输入法。</p>
+<p> 3.1安装sogou输入法</p>
+<p> (1)：卸载fcitx</p>
+<p> sudo apt-get purge fcitx*</p>
+<p> (2)：到搜狗官网下载搜狗拼音输入法，选择你系统对应的软件包，我系统是64位的，所以我选择了amd64的</p>
+<p><a href="http://pinyin.sogou.com/linux/?r=pinyin" target="_blank" rel="external">http://pinyin.sogou.com/linux/?r=pinyin</a></p>
+<p>(3)：用gdebi这个软件安装，它能够安装所有依赖关系，如果你没有安装gdebi，请先安装该软件；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#sudo apt-get install gdebi</div><div class="line"></div><div class="line">#sudo gdebi sogou_pinyin_linux_1.0.0.0014_amd64.deb</div></pre></td></tr></table></figure></p>
+<p>（2、参考网页：<a href="http://tieba.baidu.com/p/3020246301）" target="_blank" rel="external">http://tieba.baidu.com/p/3020246301）</a></p>
+<p>3.2更改pycharm.sh，使其支持中文输入</p>
+<p>搜狗中文输入在Linux下其他程序中均可正常使用，Linux下的pycharm无法使用中文输入法。</p>
+<p>这与pycharm的程序应用环境有关系。在pycharm.sh配置文件中加入下面3个选项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">export GTK_IM_MODULE=fcitx</div><div class="line"></div><div class="line">export QT_IM_MODULE=fcitx</div><div class="line"></div><div class="line">export XMODIFIERS=@im=fcitx</div></pre></td></tr></table></figure></p>
+<p>（3、参考网页：<a href="http://www.myexception.cn/program/1867990.html）" target="_blank" rel="external">http://www.myexception.cn/program/1867990.html）</a></p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-test-my-site" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
